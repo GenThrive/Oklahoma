@@ -145,11 +145,14 @@ for col in multiterm_prog_columns:
 data_dict = {}
 data_dict['Organizations'] = orgs.to_dict('records')
 data_dict['Programs'] = programs.to_dict('records')
-# duplicate_columns = orgs.columns[orgs.columns.duplicated()].tolist()
-# if duplicate_columns:
-#     print("Duplicate columns:", duplicate_columns)
-# else:
-#     print("No duplicate columns found.")
+duplicate_columns = orgs.columns[orgs.columns.duplicated()].tolist()
+dup_col_prg = programs.columns[programs.columns.duplicated()].tolist()
+# duplicate_columns.extend(programs.columns[programs.columns.duplicated()].tolist())
+if dup_col_prg:
+    print("Duplicate columns:", dup_col_prg)
+else:
+    print("No duplicate columns found.")
+
 # ----------------------------------------------------------------------------
 # Build data components for page
 # ----------------------------------------------------------------------------
